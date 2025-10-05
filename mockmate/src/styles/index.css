@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --color-bg: #f7faff;
   --color-surface: #ffffff;
@@ -60,6 +64,15 @@ body {
 }
 .btn:hover { background: var(--color-primary-600); transform: translateY(-1px); }
 
+.btn.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+.btn.btn-outline:hover {
+  background: color-mix(in oklab, var(--color-primary) 8%, transparent);
+}
+
 .card {
   background: var(--color-surface);
   border-radius: var(--radius);
@@ -67,6 +80,18 @@ body {
   padding: 20px;
   border: 1px solid rgba(2,6,23,0.06);
 }
+
+/* Form controls visibility for both themes */
+input, select, textarea {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+input::placeholder, textarea::placeholder { color: color-mix(in oklab, var(--color-muted) 80%, transparent); }
+label div { color: var(--color-text); }
+
+/* Links in both themes remain visible */
+a { color: var(--color-primary); }
+a:hover { opacity: .9; }
 
 .footer {
   padding: 24px 16px 48px;
