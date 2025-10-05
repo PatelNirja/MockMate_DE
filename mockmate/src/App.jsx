@@ -55,12 +55,13 @@ function App() {
   const [path, setPath] = React.useState(router.getPath())
   React.useEffect(() => router.subscribe(setPath), [])
   const Page = routes[path] || routes['/']
+  const showSidebar = path.startsWith('/candidate') || path.startsWith('/recruiter')
 
   return (
     <StoreProvider>
       <div className="app">
         <button className="btn" id="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode" style={{ position: 'fixed', right: 16, bottom: 16, zIndex: 50 }}>🌓</button>
-        <AppShell header={<TopHeader />} sidebar={<Sidebar />} footer={<Footer />}>
+        <AppShell header={<TopHeader />} sidebar={showSidebar ? <Sidebar /> : null} footer={<Footer />}>
           {Page}
         </AppShell>
       </div>
