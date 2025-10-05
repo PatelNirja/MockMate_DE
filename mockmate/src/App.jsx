@@ -26,6 +26,8 @@ import Help from './pages/shared/Help.jsx'
 import FAQ from './pages/shared/FAQ.jsx'
 import Contact from './pages/shared/Contact.jsx'
 import { Protected } from './utils/guard.jsx'
+import { AnimatePresence, motion } from 'framer-motion'
+import NotFound from './pages/shared/NotFound.jsx'
 
 const routes = {
   '/': <Landing />,
@@ -47,6 +49,7 @@ const routes = {
   '/help': <Help />,
   '/faq': <FAQ />,
   '/contact': <Contact />,
+  '/404': <NotFound />,
 }
 
 const router = createRouter(routes)
@@ -54,7 +57,7 @@ const router = createRouter(routes)
 function App() {
   const [path, setPath] = React.useState(router.getPath())
   React.useEffect(() => router.subscribe(setPath), [])
-  const Page = routes[path] || routes['/']
+  const Page = routes[path] || routes['/404'] || routes['/']
   const showSidebar = path.startsWith('/candidate') || path.startsWith('/recruiter')
 
   return (
@@ -62,7 +65,11 @@ function App() {
       <div className="app">
         <button className="btn" id="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode" style={{ position: 'fixed', right: 16, bottom: 16, zIndex: 50 }}>🌓</button>
         <AppShell header={<TopHeader />} sidebar={showSidebar ? <Sidebar /> : null} footer={<Footer />}>
-          {Page}
+          <AnimatePresence mode="wait">
+            <motion.div key={path} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }}>
+              {Page}
+            </motion.div>
+          </AnimatePresence>
         </AppShell>
       </div>
     </StoreProvider>

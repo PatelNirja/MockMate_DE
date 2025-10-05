@@ -24,6 +24,29 @@ export default function Interview() {
   const q = questions[idx] || { text: 'No question' }
   const progress = `${idx + 1}/${questions.length || 1}`
 
+  const recognitionRef = React.useRef(null)
+
+  const startMic = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    if (!SpeechRecognition) {
+      alert('Speech recognition is not supported in this browser.')
+      return
+    }
+    if (!recognitionRef.current) {
+      const rec = new SpeechRecognition()
+      rec.lang = 'en-US'
+      rec.interimResults = true
+      rec.continuous = false
+      rec.onresult = (e) => {
+        let transcript = ''
+        for (let i = e.resultIndex; i < e.results.length; i++) transcript += e.results[i][0].transcript
+        setAnswer((prev) => (prev ? prev + ' ' : '') + transcript.trim())
+      }
+      recognitionRef.current = rec
+    }
+    recognitionRef.current.start()
+  }
+
   return (
     <div className="card" style={{ padding: 20 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -34,7 +57,7 @@ export default function Interview() {
       <textarea value={answer} onChange={(e) => setAnswer(e.target.value)} rows={6} placeholder="Type your response..." style={{ width: '100%', padding: 12, borderRadius: 10, border: '1px solid rgba(2,6,23,0.12)' }} />
       <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
         <button className="btn" onClick={next}>Next</button>
-        <button className="btn" title="Voice input (mock)">🎙</button>
+        <button className="btn" title="Voice input" onClick={startMic}>🎙</button>
       </div>
     </div>
   )

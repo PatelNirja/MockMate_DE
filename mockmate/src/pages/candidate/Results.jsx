@@ -51,12 +51,34 @@ export default function Results() {
           </article>
         </div>
         <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-          <button className="btn">Download PDF</button>
-          <button className="btn">Download JSON</button>
+          <button className="btn" onClick={() => downloadJSON(scores)}>Download JSON</button>
+          <button className="btn" onClick={() => downloadCSV(scores)}>Download CSV</button>
         </div>
       </section>
     </div>
   )
+}
+
+function downloadJSON(data) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'mockmate-results.json'
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
+function downloadCSV(data) {
+  const header = 'label,value\n'
+  const body = data.map(d => `${d.label},${d.value}`).join('\n')
+  const blob = new Blob([header + body], { type: 'text/csv' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'mockmate-results.csv'
+  a.click()
+  URL.revokeObjectURL(url)
 }
 
 

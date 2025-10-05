@@ -14,31 +14,31 @@ export default function Signup() {
   }
 
   return (
-    <div className="container" style={{ maxWidth: 480 }}>
-      <form className="card" style={{ display: 'grid', gap: 12, padding: 20 }} onSubmit={onSubmit}>
-        <h2>Create Account</h2>
-        <label>
-          <div>Name</div>
+    <div className="container min-h-[70vh] flex items-center justify-center">
+      <form className="card w-full max-w-md" style={{ display: 'grid', gap: 12, padding: 24 }} onSubmit={onSubmit}>
+        <h2 className="text-xl font-bold text-center">Create Account</h2>
+        <label className="grid gap-1">
+          <div className="text-sm">Name</div>
           <input value={name} onChange={(e) => setName(e.target.value)} required style={inputStyle} placeholder="Jane Doe" />
         </label>
-        <label>
-          <div>Email</div>
+        <label className="grid gap-1">
+          <div className="text-sm">Email</div>
           <input value={email} onChange={(e) => setEmail(e.target.value)} required style={inputStyle} type="email" placeholder="you@example.com" />
         </label>
-        <label>
-          <div>Password</div>
+        <label className="grid gap-1">
+          <div className="text-sm">Password</div>
           <input value={password} onChange={(e) => setPassword(e.target.value)} required style={inputStyle} type="password" placeholder="Create a password" />
         </label>
-        <label>
-          <div>Role</div>
+        <label className="grid gap-1">
+          <div className="text-sm">Role</div>
           <select value={state.auth.role} onChange={(e) => setRole(e.target.value)} style={{ ...inputStyle, padding: '10px' }}>
             <option value="candidate">Candidate</option>
             <option value="recruiter">Recruiter</option>
           </select>
         </label>
-        <button className="btn" type="submit">Sign Up</button>
-        <div style={{ textAlign: 'right' }}>
-          <a href="#/login" style={{ color: 'var(--color-primary)' }}>Already have an account?</a>
+        <button className="btn mt-1" type="submit">Sign Up</button>
+        <div className="text-right text-primary-600 mt-1">
+          <a href="#/login">Already have an account?</a>
         </div>
       </form>
     </div>

@@ -5,19 +5,19 @@ import { Mic, Bot, BarChart3, Shield, GraduationCap } from 'lucide-react'
 export default function Landing() {
   return (
     <div className="container" style={{ paddingTop: 24, paddingBottom: 48 }}>
-      <motion.section className="relative card overflow-hidden" style={{ textAlign: 'left', padding: 32 }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .4 }}>
+      <motion.section className="relative card overflow-hidden min-h-[60vh] flex items-center justify-center" style={{ textAlign: 'center', padding: 32 }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .4 }}>
         <div className="absolute -right-10 -top-10 w-64 h-64 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle at 30% 30%, rgba(37,99,235,0.35), transparent 60%)' }} />
         <div className="absolute -left-16 bottom-0 w-72 h-72 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle at 70% 70%, rgba(37,99,235,0.25), transparent 60%)' }} />
-        <div className="grid md:grid-cols-2 gap-6 items-center relative">
-          <div>
+        <div className="grid gap-6 items-center relative">
+          <div className="flex flex-col items-center">
             <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">MockMate – Your AI Interview & Placement Assistant</h1>
             <p className="text-slate-600 dark:text-slate-400 mt-2">Prepare for placements with mock interviews, AI feedback, and performance insights</p>
-            <div className="flex gap-3 mt-4 flex-wrap">
-              <a href="#/signup" className="btn">Get Started</a>
-              <a href="#/login" className="btn btn-outline">Sign In</a>
+            <div className="flex justify-center gap-3 mt-5 flex-wrap">
+              <a href="#/signup" className="btn transition-transform hover:-translate-y-0.5">Get Started</a>
+              <a href="#/login" className="btn btn-outline transition-transform hover:-translate-y-0.5">Sign In</a>
             </div>
           </div>
-          <motion.div className="hidden md:flex justify-center" initial={{ opacity: 0, scale: .95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .5, delay: .1 }}>
+          <motion.div className="hidden md:flex justify-center" initial={{ opacity: 0, scale: .95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .5, delay: .1 }}>
             <div className="card p-6 flex items-center justify-center shadow-soft rounded-xl" style={{ background: 'linear-gradient(180deg, rgba(37,99,235,0.08), transparent 40%)' }}>
               <GraduationCap size={72} className="text-primary" />
             </div>
@@ -25,7 +25,7 @@ export default function Landing() {
         </div>
       </motion.section>
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-4">
+      <motion.section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-4" initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .3 }}>
         {[{ title: 'Interview Simulation', desc: 'HR, Technical, Behavioral question sets', icon: <Mic size={20} /> },
           { title: 'AI Feedback', desc: 'Insights on clarity, relevance, confidence', icon: <Bot size={20} /> },
           { title: 'Reports', desc: 'Detailed analytics and exports', icon: <BarChart3 size={20} /> },
@@ -38,7 +38,7 @@ export default function Landing() {
             <p className="text-slate-600 dark:text-slate-400 mt-1">{f.desc}</p>
           </motion.article>
         ))}
-      </section>
+      </motion.section>
 
       <section className="mt-6 grid gap-4 sm:grid-cols-2">
         {[{ quote: 'MockMate helped me land my first internship!', name: 'Priya, CS Undergrad' }, { quote: 'Great for campus placements—interviews felt familiar.', name: 'Arjun, ECE' }].map((t, i) => (

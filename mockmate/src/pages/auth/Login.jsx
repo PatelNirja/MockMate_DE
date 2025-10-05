@@ -13,28 +13,28 @@ export default function Login() {
   }
 
   return (
-    <div className="container" style={{ maxWidth: 420 }}>
-      <form className="card" style={{ display: 'grid', gap: 12, padding: 20 }} onSubmit={onSubmit}>
-        <h2>Login</h2>
-        <label>
-          <div>Email</div>
+    <div className="container min-h-[70vh] flex items-center justify-center">
+      <form className="card w-full max-w-md" style={{ display: 'grid', gap: 12, padding: 24 }} onSubmit={onSubmit}>
+        <h2 className="text-xl font-bold text-center">Sign In</h2>
+        <label className="grid gap-1">
+          <div className="text-sm">Email</div>
           <input value={email} onChange={(e) => setEmail(e.target.value)} required style={inputStyle} type="email" placeholder="you@example.com" />
         </label>
-        <label>
-          <div>Password</div>
+        <label className="grid gap-1">
+          <div className="text-sm">Password</div>
           <input value={password} onChange={(e) => setPassword(e.target.value)} required style={inputStyle} type="password" placeholder="••••••••" />
         </label>
-        <label>
-          <div>Role</div>
+        <label className="grid gap-1">
+          <div className="text-sm">Role</div>
           <select value={state.auth.role} onChange={(e) => setRole(e.target.value)} style={{ ...inputStyle, padding: '10px' }}>
             <option value="candidate">Candidate</option>
             <option value="recruiter">Recruiter</option>
           </select>
         </label>
-        <button className="btn" type="submit">Sign In</button>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <a href="#/reset" style={{ color: 'var(--color-primary)' }}>Forgot password?</a>
-          <a href="#/signup" style={{ color: 'var(--color-primary)' }}>Create account</a>
+        <button className="btn mt-1" type="submit">Sign In</button>
+        <div className="flex items-center justify-between mt-1 text-primary-600">
+          <a href="#/reset">Forgot password?</a>
+          <a href="#/signup">Create account</a>
         </div>
       </form>
     </div>
