@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStore } from '../../state/store.jsx'
+import '../../styles/home.css'
 
 export default function CandidateHome() {
   const { state } = useStore()

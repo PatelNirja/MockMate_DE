@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function RecruiterHome() {
   const stats = [
-    { label: 'Total Candidates', value: 128 },
+    { label: 'Total Candidates', value: 8 },
     { label: 'Active Interviews', value: 7 },
-    { label: 'Reports Generated', value: 312 },
+    { label: 'Reports Generated', value: 10 },
   ]
   return (
     <div className="card" style={{ padding: 20 }}>

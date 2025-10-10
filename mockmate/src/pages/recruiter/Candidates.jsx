@@ -2,9 +2,14 @@ import React from 'react'
 
 export default function Candidates() {
   const list = [
-    { id: 'c1', name: 'Alice Johnson', role: 'Frontend', lastScore: 86 },
-    { id: 'c2', name: 'Bob Smith', role: 'Backend', lastScore: 78 },
-    { id: 'c3', name: 'Carla Gomez', role: 'Data', lastScore: 92 },
+    { id: 'c1', name: 'Nidhi Rakholiya', role: 'Frontend', lastScore: 86 },
+    { id: 'c2', name: 'Saumya Patel', role: 'Backend', lastScore: 93 },
+    { id: 'c3', name: 'Nishva Patel', role: 'Data', lastScore: 92 },
+    { id: 'c1', name: 'Patel Nirja', role: 'Frontend', lastScore: 95 },
+    { id: 'c1', name: 'Neel ', role: 'Frontend', lastScore: 88 },
+    { id: 'c1', name: 'Kavya Joshi', role: 'Frontend', lastScore: 78 },
+    { id: 'c1', name: 'Yagna Suthar', role: 'Frontend', lastScore: 84 },
+    { id: 'c1', name: 'Dhrumil', role: 'Frontend', lastScore: 80 },
   ]
   return (
     <div style={{ display: 'grid', gap: 12 }}>
